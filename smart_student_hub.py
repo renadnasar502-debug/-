@@ -4,225 +4,260 @@ import random
 
 # إعدادات الصفحة
 st.set_page_config(
-    page_title="منصة الطالب الذكي",
-    page_icon="📚",
+    page_title="منصة الطالب الذكي - رنيم محمد الزبيدي",
+    page_icon="🎓",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# تطبيق CSS احترافي للألوان الجميلة والتوافق مع الجوال
-st.markdown("""
+# رابط شعار منصة مدرستي (رابط رسمي أو موثوق)
+MADRASATI_LOGO = "https://schools.madrasati.sa/img/madrasati-logo.png"
+
+# تطبيق CSS احترافي بألوان قوية وجذابة وتصميم عصري
+st.markdown(f"""
     <style>
         /* إعدادات الاتجاه العام */
-        [data-testid="stAppViewContainer"], [data-testid="stSidebar"], .main {
+        [data-testid="stAppViewContainer"], [data-testid="stSidebar"], .main {{
             direction: rtl;
             text-align: right;
-        }
+        }}
         
-        /* ألوان الخلفية الجميلة (تدرج هادئ) */
-        .stApp {
-            background: linear-gradient(to bottom, #fdfbfb 0%, #ebedee 100%);
-        }
+        /* ألوان خلفية قوية وجذابة */
+        .stApp {{
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }}
         
-        /* تنسيق العنوان الرئيسي */
-        h1 {
-            color: #6B46C1; /* بنفسجي جميل */
-            text-align: center;
-            font-weight: 700;
-            padding: 20px 0;
-            font-size: calc(1.5rem + 1.5vw); /* حجم خط مرن يناسب الجوال والكمبيوتر */
-        }
-        
-        /* تنسيق العناوين الفرعية */
-        h2, h3 {
-            color: #805AD5;
-            text-align: center;
-            margin-top: 15px;
-        }
-        
-        /* بطاقات المعلومات (مرنة وتناسب الجوال) */
-        .info-card {
-            background-color: white;
-            padding: 1.5rem;
-            border-radius: 15px;
-            border: 1px solid #E9D8FD;
-            margin-bottom: 1rem;
-            box-shadow: 0 4px 6px rgba(107, 70, 193, 0.05);
-            transition: transform 0.2s;
-        }
-        
-        .info-card:hover {
-            transform: translateY(-5px);
-            border-color: #B794F4;
-        }
-        
-        /* تنسيق الروابط كأزرار أنيقة */
-        .custom-link {
-            display: block;
-            background-color: #9F7AEA;
-            color: white !important;
-            padding: 12px;
-            text-decoration: none !important;
-            border-radius: 10px;
-            text-align: center;
-            margin: 8px 0;
-            font-weight: 500;
-            transition: 0.3s;
-        }
-        
-        .custom-link:hover {
-            background-color: #805AD5;
-            box-shadow: 0 4px 12px rgba(128, 90, 213, 0.3);
-        }
-        
-        /* تحسين مظهر القائمة الجانبية */
-        [data-testid="stSidebar"] {
-            background-color: #FAF5FF;
-            border-left: 2px solid #E9D8FD;
-        }
-        
-        /* جعل الجداول متوافقة مع الجوال */
-        .stTable {
-            overflow-x: auto;
-            display: block;
-        }
-        
-        /* تنسيق رسائل التحفيز */
-        .motivation-box {
-            background-color: #FFF5F7; /* وردي هادئ */
-            color: #9B2C2C;
+        /* تنسيق الهيدر والشعار */
+        .header-container {{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             padding: 20px;
-            border-radius: 15px;
-            border-right: 5px solid #F687B3;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(107, 70, 193, 0.1);
+            margin-bottom: 30px;
+            border-bottom: 5px solid #6B46C1;
+        }}
+        
+        .logo-img {{
+            max-width: 180px;
+            margin-bottom: 15px;
+        }}
+        
+        h1 {{
+            color: #4C51BF; /* بنفسجي قوي */
             text-align: center;
+            font-weight: 800;
+            font-size: calc(2rem + 1.5vw);
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }}
+        
+        /* تنسيق البطاقات بألوان فاتحة وجذابة */
+        .info-card {{
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            border: none;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border-top: 5px solid #9F7AEA;
+        }}
+        
+        .info-card:hover {{
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(107, 70, 193, 0.15);
+        }}
+        
+        /* أزرار روابط قوية */
+        .custom-link {{
+            display: block;
+            background: linear-gradient(90deg, #6B46C1 0%, #805AD5 100%);
+            color: white !important;
+            padding: 15px;
+            text-decoration: none !important;
+            border-radius: 12px;
+            text-align: center;
+            margin: 10px 0;
+            font-weight: 600;
             font-size: 1.1rem;
-            margin: 20px 0;
-        }
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(107, 70, 193, 0.3);
+        }}
+        
+        .custom-link:hover {{
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(107, 70, 193, 0.4);
+        }}
+        
+        /* رسائل التحفيز بلون وردي جذاب */
+        .motivation-box {{
+            background: linear-gradient(135deg, #FFF5F7 0%, #FED7E2 100%);
+            color: #9B2C2C;
+            padding: 25px;
+            border-radius: 20px;
+            border-right: 8px solid #F687B3;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 25px 0;
+            box-shadow: 0 5px 15px rgba(246, 135, 179, 0.2);
+        }}
 
-        /* تعديل المسافات لتناسب الجوال */
-        @media (max-width: 768px) {
-            .main .block-container {
-                padding: 1rem;
-            }
-            h1 {
-                font-size: 1.8rem;
-            }
-        }
+        /* تذييل الصفحة باسم الطالبة */
+        .footer {{
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            background: white;
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.05);
+            border-top: 3px solid #6B46C1;
+        }}
+        
+        .footer p {{
+            color: #4A5568;
+            font-weight: 600;
+            margin: 5px 0;
+        }}
+
+        /* تنسيق الجداول */
+        .stTable {{
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }}
     </style>
 """, unsafe_allow_html=True)
 
+# الهيدر والشعار
+st.markdown(f"""
+    <div class="header-container">
+        <img src="{MADRASATI_LOGO}" class="logo-img" alt="شعار مدرستي">
+        <h1>منصة الطالب الذكي</h1>
+    </div>
+""", unsafe_allow_html=True)
+
 # شريط التنقل الجانبي
-st.sidebar.markdown("<h2 style='text-align: center; color: #6B46C1;'>القائمة</h2>", unsafe_allow_html=True)
+st.sidebar.markdown("<h2 style='text-align: center; color: #6B46C1;'>📌 التنقل</h2>", unsafe_allow_html=True)
 page = st.sidebar.radio(
-    "انتقلي إلى:",
-    ["🏠 الرئيسية", "📅 الجدول الدراسي", "🔗 روابط مفيدة", "💡 نصائح دراسية"]
+    "انتقلي إلى القسم المطلوب:",
+    ["🏠 الصفحة الرئيسية", "📅 الجدول الدراسي", "🔗 الروابط التعليمية", "💡 نصائح وإلهام"]
 )
 
 # ============ الصفحة الرئيسية ============
-if page == "🏠 الرئيسية":
-    st.markdown("<h1>منصة الطالب الذكي</h1>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; color: #718096;'>مرحباً بكِ في مساحتكِ الخاصة للتنظيم والإبداع</p>", unsafe_allow_html=True)
+if page == "🏠 الصفحة الرئيسية":
+    st.markdown("<h2 style='text-align: center;'>مرحباً بكِ في مساحتكِ الإبداعية</h2>", unsafe_allow_html=True)
     
-    st.markdown("---")
-    
-    # استخدام columns التي تتحول تلقائياً لصفوف في الجوال
-    col1, col2, col3 = st.columns([1, 1, 1])
+    col1, col2, col3 = st.columns(3)
     
     with col1:
         st.markdown("""
         <div class='info-card'>
-            <h3>التعليم</h3>
-            <p style='text-align: center;'>مصادر تعليمية متنوعة لتطوير مهاراتكِ</p>
+            <h3 style='text-align: center;'>📚 التعليم</h3>
+            <p style='text-align: center;'>استكشفي عالم المعرفة وطوري مهاراتكِ الرقمية</p>
         </div>
         """, unsafe_allow_html=True)
         
     with col2:
         st.markdown("""
         <div class='info-card'>
-            <h3>التنظيم</h3>
-            <p style='text-align: center;'>نظمي مهامكِ الدراسية بكل سهولة</p>
+            <h3 style='text-align: center;'>⏰ التنظيم</h3>
+            <p style='text-align: center;'>نظمي وقتكِ ومهامكِ الدراسية بكل سهولة ويسر</p>
         </div>
         """, unsafe_allow_html=True)
         
     with col3:
         st.markdown("""
         <div class='info-card'>
-            <h3>النجاح</h3>
-            <p style='text-align: center;'>حققي أهدافكِ الدراسية بذكاء</p>
+            <h3 style='text-align: center;'>🏆 النجاح</h3>
+            <p style='text-align: center;'>حققي أهدافكِ وطموحاتكِ لتكوني فخراً لوطنكِ</p>
         </div>
         """, unsafe_allow_html=True)
     
     st.markdown("---")
     
-    # معلومات سريعة
-    c1, c2 = st.columns(2)
+    # معلومات سريعة جذابة
+    c1, c2, c3 = st.columns(3)
     with c1:
         st.info(f"📅 اليوم: {datetime.now().strftime('%A')}")
     with c2:
         st.success(f"⏰ الوقت: {datetime.now().strftime('%H:%M')}")
+    with c3:
+        st.warning("🎯 المستوى: الثاني متوسط")
 
 # ============ الجدول الدراسي ============
 elif page == "📅 الجدول الدراسي":
-    st.markdown("<h1>جدولكِ الدراسي</h1>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align: center;'>📅 جدولكِ الدراسي الأسبوعي</h2>", unsafe_allow_html=True)
     
     schedule_data = {
-        "الحصة": ["1", "2", "3", "4"],
-        "الأحد": ["رياضيات", "علوم", "عربي", "إنجليزي"],
-        "الاثنين": ["إنجليزي", "رياضيات", "علوم", "دراسات"],
-        "الثلاثاء": ["دراسات", "عربي", "رياضيات", "دين"],
-        "الأربعاء": ["دين", "حاسب", "دراسات", "رياضيات"],
-        "الخميس": ["علوم", "رياضيات", "عربي", "فنية"]
+        "الحصة": ["الأولى", "الثانية", "الثالثة", "الرابعة"],
+        "الأحد": ["الرياضيات", "العلوم", "اللغة العربية", "اللغة الإنجليزية"],
+        "الاثنين": ["اللغة الإنجليزية", "الرياضيات", "العلوم", "الدراسات الاجتماعية"],
+        "الثلاثاء": ["الدراسات الاجتماعية", "اللغة العربية", "الرياضيات", "التربية الإسلامية"],
+        "الأربعاء": ["التربية الإسلامية", "المهارات الرقمية", "الدراسات الاجتماعية", "الرياضيات"],
+        "الخميس": ["العلوم", "الرياضيات", "اللغة العربية", "التربية الفنية"]
     }
     
     st.table(schedule_data)
     
     st.markdown("---")
-    st.markdown("<h3>إضافة مهمة جديدة</h3>", unsafe_allow_html=True)
-    t_name = st.text_input("اسم المهمة:")
-    if st.button("حفظ المهمة"):
-        if t_name: st.success(f"تم حفظ المهمة: {t_name}")
+    st.markdown("<h3>📝 مفكرة المهام السريعة</h3>", unsafe_allow_html=True)
+    t_name = st.text_input("ما هي المهمة التي تودين إنجازها اليوم؟")
+    if st.button("إضافة للمفكرة"):
+        if t_name: st.balloons(); st.success(f"رائع يا رنيم! تمت إضافة: {t_name}")
 
-# ============ الروابط المفيدة ============
-elif page == "🔗 روابط مفيدة":
-    st.markdown("<h1>روابط تهمكِ</h1>", unsafe_allow_html=True)
+# ============ الروابط التعليمية ============
+elif page == "🔗 الروابط التعليمية":
+    st.markdown("<h2 style='text-align: center;'>🔗 روابط تعليمية هامة</h2>", unsafe_allow_html=True)
     
     links = {
-        "منصة مدرستي": "https://schools.madrasati.sa",
-        "قناة عين التعليمية": "https://www.einarabic.com",
-        "بوابة عين": "https://ien.edu.sa",
-        "موقع حلول": "https://hulul.online"
+        "📱 منصة مدرستي": "https://schools.madrasati.sa",
+        "📺 قناة عين التعليمية": "https://www.einarabic.com",
+        "🌐 بوابة عين الإثرائية": "https://ien.edu.sa",
+        "📖 موقع حلول التعليمي": "https://hulul.online",
+        "🎓 منصة إدراك": "https://www.edraak.org"
     }
     
     for name, url in links.items():
         st.markdown(f"<a href='{url}' class='custom-link' target='_blank'>{name}</a>", unsafe_allow_html=True)
 
-# ============ نصائح دراسية ============
-elif page == "💡 نصائح دراسية":
-    st.markdown("<h1>نصائح وإلهام</h1>", unsafe_allow_html=True)
+# ============ نصائح وإلهام ============
+elif page == "💡 نصائح وإلهام":
+    st.markdown("<h2 style='text-align: center;'>🌟 كلمات ملهمة لكِ</h2>", unsafe_allow_html=True)
     
     motivations = [
-        "أنتِ قادرة على تحقيق المستحيل بإصراركِ",
-        "كل خطوة صغيرة تقربكِ من حلمكِ الكبير",
-        "العلم نور يضيء لكِ دروب المستقبل",
-        "ثقي بنفسكِ، فأنتِ مبدعة ومتميزة"
+        "رنيم.. أنتِ قادرة على تحقيق المستحيل بإصراركِ وعزيمتكِ!",
+        "كل يوم تدرسين فيه هو خطوة نحو مستقبلكِ المشرق بإذن الله.",
+        "العلم هو السلاح الأقوى لتغيير العالم.. استمري في الإبداع.",
+        "ثقي بنفسكِ وبقدراتكِ، فأنتِ نجمة في سماء التميز.",
+        "النجاح هو مجموع خطوات صغيرة تتكرر كل يوم.. لا تتوقفي!"
     ]
     
     st.markdown(f"<div class='motivation-box'>{random.choice(motivations)}</div>", unsafe_allow_html=True)
     
     tips = [
-        ("نظمي وقتكِ", "خصصي وقتاً لكل مادة وخذي فترات راحة"),
-        ("اختاري مكاناً هادئاً", "الهدوء يساعد على التركيز وسرعة الفهم"),
-        ("اشربي الماء", "الماء ينشط الذاكرة ويحافظ على حيويتكِ")
+        ("🎯 حددي أهدافكِ", "اكتبي ما تودين تحقيقه كل صباح لتكوني أكثر تركيزاً."),
+        ("🧘 استرخي قليلاً", "الراحة بين المذاكرة تجدد نشاط عقلكِ وتزيد من استيعابكِ."),
+        ("💧 حافظي على صحتكِ", "شرب الماء والغذاء الصحي هما وقود عقلكِ المبدع.")
     ]
     
     for title, desc in tips:
         st.markdown(f"""
         <div class='info-card'>
-            <h4>{title}</h4>
+            <h4 style='color: #6B46C1;'>{title}</h4>
             <p style='text-align: center;'>{desc}</p>
         </div>
         """, unsafe_allow_html=True)
 
-# التذييل
-st.markdown("---")
-st.markdown("<p style='text-align: center; color: #A0AEC0; font-size: 0.8rem;'>منصة الطالب الذكي © 2025 | تم تطويرها بواسطة طالبة مبدعة</p>", unsafe_allow_html=True)
+# التذييل الاحترافي باسم الطالبة
+st.markdown(f"""
+    <div class="footer">
+        <p>🎓 منصة الطالب الذكي © 2025</p>
+        <p>تم تطويرها بواسطة المبدعة: <span style="color: #6B46C1; font-size: 1.2rem;">رنيم محمد الزبيدي</span></p>
+        <p style="font-size: 0.8rem; color: #A0AEC0;">مشروع مسابقة البرمجة الرقمية - الصف الثاني متوسط</p>
+    </div>
+""", unsafe_allow_html=True)
