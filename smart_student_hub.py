@@ -87,7 +87,7 @@ st.markdown(f"""
     <div class="header-container">
         <img src="{MADRASATI_LOGO}" class="logo-img" onerror="this.src='https://www.moe.gov.sa/ar/education/general-education/PublishingImages/madrasati.png'" alt="منصة مدرستي">
         <h2 style="margin-bottom: 5px; text-align: center;"></h2>
-        <h3 style="color: #805AD5; margin-top: 0; text-align: center;">وزارة التعليم - المملكة العربية السعودية</h3>
+        <h3 style="color: #805AD5; margin-top: 0; text-align: center;">منصة الطالب الذكي</h3>
         <h1>منصة الطالب الذكي</h1>
     </div>
 """, unsafe_allow_html=True )
