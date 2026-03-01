@@ -4,7 +4,7 @@ import random
 
 # إعدادات الصفحة
 st.set_page_config(
-    page_title="منصة الطالب الذكي - رنيم محمد الزبيدي",
+    page_title="منصة الطالب الذكي -",
     page_icon="🎓",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -86,7 +86,7 @@ st.markdown(f"""
 st.markdown(f"""
     <div class="header-container">
         <img src="{MADRASATI_LOGO}" class="logo-img" onerror="this.src='https://www.moe.gov.sa/ar/education/general-education/PublishingImages/madrasati.png'" alt="منصة مدرستي">
-        <h2 style="margin-bottom: 5px; text-align: center;">المدرسة الخامسة والثمانون المتوسطة</h2>
+        <h2 style="margin-bottom: 5px; text-align: center;"></h2>
         <h3 style="color: #805AD5; margin-top: 0; text-align: center;">وزارة التعليم - المملكة العربية السعودية</h3>
         <h1>منصة الطالب الذكي</h1>
     </div>
@@ -98,7 +98,7 @@ page = st.sidebar.radio("اختاري القسم:", ["🏠 الرئيسية", "�
 
 # ============ الصفحة الرئيسية ============
 if page == "🏠 الرئيسية":
-    st.markdown("<h2 style='text-align: center;'>مرحباً بكِ يا رنيم في مدرستكِ الرقمية</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align: center;'>مرحباً بكِم مدرستكِم الرقمية</h2>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns(3)
     with col1: st.markdown("<div class='info-card'><h3 style='text-align: center;'>📚 التعليم</h3><p style='text-align: center;'>دروسكِ ومصادركِ التعليمية في مكان واحد</p></div>", unsafe_allow_html=True)
     with col2: st.markdown("<div class='info-card'><h3 style='text-align: center;'>⏰ التنظيم</h3><p style='text-align: center;'>نظمي وقتكِ الدراسي وحققي أهدافكِ اليومية</p></div>", unsafe_allow_html=True)
@@ -144,8 +144,7 @@ elif page == "💡 نصائح وإلهام":
 st.markdown(f"""
     <div class="footer">
         <p>🎓 منصة الطالب الذكي © 2025</p>
-        <p>المدرسة الخامسة والثمانون المتوسطة</p>
-        <p>تم تطويرها بكل فخر بواسطة المبدعة: <span style="color: #6B46C1; font-size: 1.5rem;">رنيم محمد الزبيدي</span></p>
-        <p style="font-size: 1rem; color: #718096;">مشروع مسابقة البرمجة الرقمية - الصف الثاني متوسط</p>
+        <p> تم تصميمه   بواسطة : <span style="color: #6B46C1; font-size: 1.5rem;">رنيم محمد الزبيدي</span></p>
+        <p style="font-size: 1rem; color: #718096;">تصميم  المسابقة  الرقمية - الصف الثاني متوسط</p>
     </div>
 """, unsafe_allow_html=True)
